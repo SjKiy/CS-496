@@ -1,0 +1,47 @@
+
+(* 2 *)
+
+let l1 = { head <= 0; size <= 0} (* 0 in head signals null *)
+in let add_front = proc (x) { proc (l) {
+   	      begin
+	         l.head <={ data <=x; next <= l.head };
+		 l.size <= l.size+1
+              end
+	      } 
+	      }
+	      
+ in letrec remove_last_helper (l) =
+ 
+ 
+ (* recursive helper function*)
+  if number?(l.next.next)
+  then l.next <= 0
+
+
+  else (remove_last_helper l.next)
+  
+  
+  (*start for proc*)
+  
+in let remove_last = proc (main) {
+  if number?(main.head.next)
+  
+  (* if is number *)
+  then begin
+      main.head <= 0;
+      main.size <= l.size-1
+      end
+  else begin
+  (* else if not number, use helper *)
+  
+      (remove_last_helper main.head);
+      main.size <= main.size-1
+      end
+}
+in begin
+     ((add_front 2) l1);
+     ((add_front 3) l1);
+     ((add_front 4) l1);
+     (remove_last l1);
+     debug(l1)  (* required inspect the list *)
+   end

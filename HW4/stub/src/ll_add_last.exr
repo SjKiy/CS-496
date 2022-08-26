@@ -1,0 +1,53 @@
+
+(* Add Last exercise *)
+
+let l1 = { head <= 0; size <= 0} (* 0 in head signals null *)
+
+
+
+in letrec add_last_helper (element) = proc (helper){ 
+
+
+(* helper function program *)
+
+  if number?(element.next)
+  
+  (*if .next is number *)
+  then element.next <= {data <= helper; next <= 0}
+  
+  
+  (*if .next is not number *)
+  
+  else ((add_last_helper element.next) helper)
+}
+
+(* main proc function *)
+in let add_last = proc (ll) { proc (a) {
+  if number?(ll.head)
+  
+  (* if .head is number *)
+  
+  then begin
+        ll.head <= {data <=a; next <= 0};
+        ll.size <= ll.size + 1
+        end
+        
+        
+       (*if .head is not number, perform recursive function *)      
+  else begin
+        ((add_last_helper ll.head) a);
+        ll.size <= ll.size + 1
+        end
+       
+    
+          
+}  }
+in begin
+     ((add_last l1) 2);
+     ((add_last l1) 3);
+     ((add_last l1) 4);
+     debug(l1)  (* required inspect the list *)
+   end
+   
+   
+  
